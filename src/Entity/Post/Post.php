@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Entity\Post;
 
-use App\Repository\PostRepository;
+use App\Repository\Post\PostRepository;
 use Cocur\Slugify\Slugify;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
@@ -34,7 +34,7 @@ class Post
 
     #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank()]
-    private ?string $slug = null;
+    private string $slug = '';
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank()]
@@ -43,6 +43,9 @@ class Post
     #[ORM\Column(length: 255)]
     private ?string $state = Post::STATES[0];
 
+    #[ORM\OneToOne(inversedBy: 'post', targetEntity: Thumbnail::class, cascade: ['persist', 'remove'])]
+    private Thumbnail $thumbnail;
+
     #[ORM\Column]
     #[Assert\NotNull()]
     private ?DateTimeImmutable $createdAt;
@@ -50,6 +53,8 @@ class Post
     #[ORM\Column]
     #[Assert\NotNull()]
     private ?DateTimeImmutable $updatedAt;
+
+
 
     public function __construct()
     {
@@ -63,11 +68,12 @@ class Post
         $this->updatedAt = new DateTimeImmutable();
     }
 
-    #[ORM\prePersist]
+    #[ORM\PrePersist]
     public function prePersist(): void
     {
         $this->slug = (new Slugify())->slugify($this->title);
     }
+
 
     public function getId(): ?int
     {
@@ -86,7 +92,7 @@ class Post
         return $this;
     }
 
-    public function getSlug(): ?string
+    public function getSlug(): string
     {
         return $this->slug;
     }
@@ -122,6 +128,18 @@ class Post
         return $this;
     }
 
+    public function getThumbnail(): ?Thumbnail
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(Thumbnail $thumbnail): self
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
@@ -145,6 +163,7 @@ class Post
 
         return $this;
     }
+    
 
     public function __toString(): string
     {
