@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto">
+        <div class="w-2/3 mx-auto mt-6">
+            <a href="{{ path('post.index') }}" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Retourner au blog
+            </a>
+        </div>
+
+        <h1 class="text-5xl text-center mt-8 mb-4 text-blue-700">{{ post.title|capitalize }}!</h1>
+        <h2 class="text-2xl text-center mb-8">Publié le {{ post.createdAt|date('d/m/Y') }}</h2>
+
+        {% include "components/_share.html.twig" %}
+
+        {% if post.thumbnail %}
+            <img class="rounded-t-lg" src="{{ vich_uploader_asset(post.thumbnail, 'imageFile') }}" alt="{{ post.thumbnail.imageName }}">
+        {% endif %}
+
+        {# <div class="w-2/3 mx-auto my-8 leading-6">
+            {% include "components/_badges.html.twig" with {
+                badges: post.categories
+            } only %}
+        </div>
+        #}
+
+        <div class="w-2/3 mx-auto my-8 leading-6">
+            {{ post.content|raw }}
+            <p class="text-xs mt-8">Dernière mise à jour le
+                {{ post.updatedAt|date('d/m/Y') }}</p>
+        </div>
+    </div>
+{% endblock %}
