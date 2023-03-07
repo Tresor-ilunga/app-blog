@@ -142,4 +142,33 @@ class PostTest extends WebTestCase
         $this->assertStringContainsString('https://twitter.com/intent/tweet', $link);
         $this->assertStringContainsString($postLink, $link);
     }
+
+    public function testCategoriesAreDisplay(): void
+    {
+        $client = static::createClient();
+
+        /** @var  $urlGeneratorInterface */
+        $urlGeneratorInterface = $client->getContainer()->get('router');
+
+        /** @var  $entityManager */
+        $entityManager = $client->getContainer()->get('doctrine.orm.entity_manager');
+
+        /** @var  $postRepository */
+        $postRepository = $entityManager->getRepository(Post::class);
+
+        /** @var  $post */
+        $post = $postRepository->findOneBy([]);
+
+        $crawler = $client->request(
+            Request::METHOD_GET,
+            $urlGeneratorInterface->generate('post.show', ['slug' => $post->getSlug()])
+        );
+
+        if (!$post->getCategories()->isEmpty())
+        {
+            $badges = $crawler->filter('.badges')->children();
+            $this->assertGreaterThanOrEqual(1, count($badges));
+        }
+
+    }
 }
