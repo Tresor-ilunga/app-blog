@@ -1,21 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity\Post;
 
-use App\Repository\Post\CategoryRepository;
+use App\Repository\Post\TagRepository;
 use Cocur\Slugify\Slugify;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: CategoryRepository::class)]
+/**
+ * Class Tag
+ * @author Tresor-ilunga <19im065@esisalama.org>
+ */
+#[ORM\Entity(repositoryClass: TagRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-#[UniqueEntity('slug', message: 'Ce slug est déjà utilisé')]
-class Category
+#[UniqueEntity('slug', message: 'Ce slug existe déjà')]
+
+class Tag
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -33,14 +41,14 @@ class Category
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Post::class, inversedBy: 'categories')]
-    #[ORM\JoinTable(name: 'categories_posts')]
+    #[ORM\ManyToMany(targetEntity: Post::class, inversedBy: 'tags')]
+    #[JoinTable(name: 'tag_post')]
     private Collection $posts;
+
 
     #[ORM\Column]
     #[Assert\NotNull()]
     private ?DateTimeImmutable $createdAt;
-
 
     public function __construct()
     {
@@ -128,9 +136,8 @@ class Category
         return $this;
     }
 
-    public function __toString(): string
+    public function __toString()
     {
         return $this->name;
     }
-
 }

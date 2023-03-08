@@ -14,7 +14,7 @@ final class Version20230305201935 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Creation de la table thumbnail ainsi que la relation entre post et thumbnail';
+        return 'Creation de la table thumbnail ainsi que la relation entre post, thumbnail';
     }
 
     public function up(Schema $schema): void

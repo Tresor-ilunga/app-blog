@@ -14,7 +14,7 @@ final class Version20230306225540 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'Relation de la table post avec la table category';
+        return '';
     }
 
     public function up(Schema $schema): void
