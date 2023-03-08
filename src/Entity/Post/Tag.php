@@ -42,7 +42,7 @@ class Tag
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Post::class, inversedBy: 'tags')]
-    #[JoinTable(name: 'tag_post')]
+    #[JoinTable(name: 'tags_post')]
     private Collection $posts;
 
 

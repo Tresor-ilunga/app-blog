@@ -24,7 +24,7 @@ class BlogTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
 
         $this->assertSelectorExists('h1');
-        $this->assertSelectorTextContains('h1', 'Bienvenu sur le blog');
+        $this->assertSelectorTextContains('h1', 'Bienvenu sur le post');
     }
 
     public function testPaginationWorks(): void

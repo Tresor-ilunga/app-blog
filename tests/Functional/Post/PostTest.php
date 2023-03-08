@@ -68,7 +68,7 @@ class PostTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
 
-        $link = $crawler->selectLink('Retourner au blog')->link()->getUri();
+        $link = $crawler->selectLink('Retourner au post')->link()->getUri();
 
         $crawler = $client->request(Request::METHOD_GET, $link);
 
