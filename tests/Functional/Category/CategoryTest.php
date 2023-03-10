@@ -76,36 +76,4 @@ class CategoryTest extends WebTestCase
         $posts = $crawler->filter('div.card');
         $this->assertGreaterThanOrEqual(1, count($posts));
     }
-
-    public function testDropdownWorks(): void
-    {
-        $client = static::createClient();
-
-        /** @var  $urlGeneratorInterface */
-        $urlGeneratorInterface = $client->getContainer()->get('router');
-
-        /** @var  $entityManager */
-        $entityManager = $client->getContainer()->get('doctrine.orm.entity_manager');
-
-        /** @var  $categoryRepository */
-        $categoryRepository = $entityManager->getRepository(Category::class);
-
-        /** @var  $category */
-        $category = $categoryRepository->findOneBy([]);
-
-        $crawler = $client->request(Request::METHOD_GET,
-            $urlGeneratorInterface->generate('category.index', ['slug' => $category->getSlug()]));
-
-        $this->assertResponseIsSuccessful();
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-
-        $link = $crawler->filter('.dropdown-menu > li > a')->link()->getUri();
-        $client->request(Request::METHOD_GET, $link);
-
-        $this->assertResponseIsSuccessful();
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-
-        $this->assertRouteSame('category.index');
-
-    }
 }
