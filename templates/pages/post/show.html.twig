@@ -12,6 +12,13 @@
             </a>
         </div>
 
+        <div class="mt-6">
+            {% for message in app.flashes('success') %}
+                {% include "components/_alert.html.twig" with {
+                    message: message
+                } only %}
+            {% endfor %}
+        </div>
         <h1 class="text-5xl text-center mt-8 mb-4 text-blue-700">{{ post.title|capitalize }}!</h1>
         <h2 class="text-2xl text-center mb-8">Publié le {{ post.createdAt|date('d/m/Y') }}</h2>
 
@@ -47,6 +54,34 @@
 
                 {% endfor %}
             </ul>
+
+            <div class="mt-5">
+                <h2 class="text-2xl mb-8">Commentaire (s)</h2>
+                <div class="comments">
+
+                    {% if app.user %}
+                        <div class="comments__new">
+                            <div class="w-full-width">
+                                {{ form_start(form) }}
+                                {{ form_label(form.content, 'Nouveau commentaire', {'attr' : {'class' : 'form-label inline-block mb-2 text-gray-700'}}) }}
+                                {{ form_widget(form.content, {'attr': {'class': 'form-control block w-full px-3 py-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-500 rounded transition ease-in-out b-6:focus-text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
+                                <button class="btn inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center mt-5"
+                                        type="submit" id="button-addoo2">
+                                    Poster mon commentaire
+                                </button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <hr class="my-3">
+
+                    {% for comment in post.comments %}
+                         {% include "components/_comment.html.twig" %}
+                    {% endfor %}
+
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

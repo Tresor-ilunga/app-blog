@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Blog;
 
+use App\Entity\Post\Comment;
 use App\Entity\Post\Post;
+use App\Form\CommentType;
 use App\Form\SearchType;
 use App\Model\SearchData;
 use App\Repository\Post\PostRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PostController extends AbstractController
 {
-    #[Route('/', name: 'post.index', methods: ['GET'])]
+    #[Route('/', name: 'post.index', methods: ['GET', 'POST'])]
     public function index(PostRepository $postRepository, Request $request): Response
     {
         $searchData  = new SearchData();
@@ -43,11 +46,35 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{slug}', name: 'post.show', methods: ['GET'])]
-    public function show(Post $post): Response
+    #[Route('/article/{slug}', name: 'post.show', methods: ['GET', 'POST'])]
+    public function show(Post $post, Request $request, EntityManagerInterface $manager): Response
     {
+        $comment = new Comment();
+        $comment->setPost($post);
+        if ($this->getUser())
+        {
+            $comment->setAuthor($this->getUser());
+        }
+
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $manager->persist($comment);
+            $manager->flush();
+
+            $this->addFlash
+            ('success',
+                'Votre commentaire a été enregistré. Il ser soumis à moderation dans les plus brefs délais.'
+            );
+
+            return $this->redirectToRoute('post.show', ['slug' => $post->getSlug()]);
+        }
+
         return $this->render('pages/post/show.html.twig', [
-            'post' => $post
+            'post' => $post,
+            'form' => $form->createView()
         ]);
     }
 }
