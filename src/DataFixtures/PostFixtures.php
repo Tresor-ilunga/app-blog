@@ -11,7 +11,7 @@ use Faker\Factory;
 
 /**
  * Class PostFixtures.
- * @author Tresor-ilunga <19im065@esisalama.org>
+ * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 class PostFixtures extends Fixture
 {

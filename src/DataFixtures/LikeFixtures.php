@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Repository\UserRepository;
@@ -8,6 +10,10 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
+/**
+ * Class LikeFixtures
+ * @author Tresor-ilunga <ilungat82@gmail.com>
+ */
 class LikeFixtures extends Fixture implements DependentFixtureInterface
 {
     public function __construct(

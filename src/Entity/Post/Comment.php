@@ -8,6 +8,10 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Comment
+ * @author Tresor-ilunga <ilungat82@gmail.com>
+ */
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {

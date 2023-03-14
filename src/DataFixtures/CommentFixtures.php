@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Entity\Post\Comment;
@@ -10,6 +12,10 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 
+/**
+ * Class CommentFixtures
+ * @author Tresor-ilunga <ilungat82@gmail.com>
+ */
 class CommentFixtures extends Fixture implements DependentFixtureInterface
 {
     public function __construct(
