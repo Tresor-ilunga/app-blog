@@ -18,6 +18,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CommentController extends AbstractController
 {
+    /**
+     * This method is used to delete a comment
+     *
+     * @param Comment $comment
+     * @param EntityManagerInterface $em
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/comment/{id}', name: 'comment.delete', methods: ['GET', 'POST'])]
     #[Security("is_granted('ROLE_USER') and user === comment.getAuthor()")]
     public function delete(Comment $comment, EntityManagerInterface $em, Request $request): Response

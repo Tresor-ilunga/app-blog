@@ -15,6 +15,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  */
 class SecurityController extends AbstractController
 {
+    /**
+     * This method is used to login a user
+     *
+     * @param AuthenticationUtils $utils
+     * @return Response
+     */
     #[Route('/connexion', name: 'security.login', methods: ['GET', 'POST'])]
     public function login(AuthenticationUtils $utils): Response
     {
@@ -26,6 +32,11 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    /**
+     * This method is used to logout a user
+     *
+     * @return void
+     */
     #[Route('/deconnexion', name: 'security.logout', methods: ['GET', 'POST'])]
     public function logout(): void
     {

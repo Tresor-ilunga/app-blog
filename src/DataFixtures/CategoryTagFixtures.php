@@ -18,6 +18,11 @@ use Faker\Factory;
  */
 class CategoryTagFixtures extends Fixture implements DependentFixtureInterface
 {
+    /**
+     * CategoryTagFixtures constructor.
+     *
+     * @param PostRepository $postRepository
+     */
     public function __construct(private PostRepository $postRepository)
     {
     }
@@ -70,6 +75,11 @@ class CategoryTagFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
+    /**
+     * The classes of the fixtures that must be loaded before this one.
+     *
+     * @return string[]
+     */
     public function getDependencies(): array
     {
         return [

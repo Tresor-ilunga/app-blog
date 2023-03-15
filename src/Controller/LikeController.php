@@ -17,6 +17,13 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
  */
 class LikeController extends AbstractController
 {
+    /**
+     * This method is used to like a post
+     *
+     * @param Post $post
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/like/article/{id}', name: 'like.post', methods: ['GET'])]
     #[IsGranted('ROLE_USER')]
     public function like(Post $post, EntityManagerInterface $manager): Response

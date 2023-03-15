@@ -16,6 +16,11 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  */
 class LikeFixtures extends Fixture implements DependentFixtureInterface
 {
+    /**
+     * LikeFixtures constructor.
+     * @param PostRepository $postRepository
+     * @param UserRepository $userRepository
+     */
     public function __construct(
         private PostRepository $postRepository,
         private UserRepository $userRepository

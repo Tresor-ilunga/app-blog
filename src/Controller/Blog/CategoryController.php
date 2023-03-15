@@ -17,6 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CategoryController extends AbstractController
 {
+    /**
+     * This method is used to display all posts of a category
+     *
+     * @param Category $category
+     * @param PostRepository $postRepository
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/categories/{slug}', name: 'category.index', methods: ['GET'])]
     public function index(Category $category, PostRepository $postRepository, Request $request): Response
     {

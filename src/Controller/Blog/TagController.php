@@ -18,6 +18,14 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/etiquettes')]
 class TagController extends AbstractController
 {
+    /**
+     * The tag index page
+     *
+     * @param Tag $tag
+     * @param PostRepository $postRepository
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/{slug}', name: 'tag.index', methods: ['GET'])]
     public function index(Tag $tag, PostRepository $postRepository, Request $request): Response
     {

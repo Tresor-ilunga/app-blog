@@ -22,6 +22,13 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PostController extends AbstractController
 {
+    /**
+     * This method is used to display all posts
+     *
+     * @param PostRepository $postRepository
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/', name: 'post.index', methods: ['GET', 'POST'])]
     public function index(PostRepository $postRepository, Request $request): Response
     {
@@ -46,6 +53,14 @@ class PostController extends AbstractController
         ]);
     }
 
+    /**
+     * This method is used to display a post
+     *
+     * @param Post $post
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/article/{slug}', name: 'post.show', methods: ['GET', 'POST'])]
     public function show(Post $post, Request $request, EntityManagerInterface $manager): Response
     {

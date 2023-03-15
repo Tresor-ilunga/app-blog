@@ -18,6 +18,12 @@ use Faker\Factory;
  */
 class CommentFixtures extends Fixture implements DependentFixtureInterface
 {
+    /**
+     * The constructor.
+     *
+     * @param PostRepository $postRepository
+     * @param UserRepository $userRepository
+     */
     public function __construct(
         private readonly PostRepository $postRepository,
         private readonly UserRepository $userRepository
@@ -47,6 +53,11 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
+    /**
+     * The order in which fixtures will be loaded.
+     *
+     * @return string[]
+     */
     public function getDependencies(): array
     {
         return [
