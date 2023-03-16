@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity\Post;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\Post\CategoryRepository;
 use Cocur\Slugify\Slugify;
 use DateTimeImmutable;
@@ -21,6 +24,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[UniqueEntity('slug', message: 'Ce slug est déjà utilisé')]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+)]
 class Category
 {
     #[ORM\Id]

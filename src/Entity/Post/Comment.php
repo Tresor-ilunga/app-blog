@@ -2,6 +2,9 @@
 
 namespace App\Entity\Post;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Entity\User;
 use App\Repository\Post\CommentRepository;
 use DateTimeImmutable;
@@ -13,6 +16,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+)]
 class Comment
 {
     #[ORM\Id]

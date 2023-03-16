@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity\Post;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Entity\User;
 use App\Repository\Post\PostRepository;
 use Cocur\Slugify\Slugify;
@@ -22,6 +25,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[UniqueEntity('slug', message: 'Ce slug est déjà utilisé')]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+)]
 class Post
 {
     const STATES = ['STATE_DRAFT', 'STATE_PUBLISHED'];
