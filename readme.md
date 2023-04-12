@@ -10,7 +10,7 @@ Blog est un site internet qui vous présentent des articles sur des sujets diver
 * Composer
 * Symfony CLI
 
-Vous pouvez vérifier les pré-requis (sauf Docker et Docker-compose) avec la commande suivante (de la CLI Symfony) ; 
+Vous pouvez vérifier les pré-requis (sauf Docker et Docker-compose) avec la commande suivante (de la CLI Symfony) : 
 
 ```bash
 symfony check:requirements
