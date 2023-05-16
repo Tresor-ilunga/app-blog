@@ -1,28 +1,29 @@
 # Blog
 
-Blog est un site internet qui vous présentent des articles sur des sujets divers et variés.
+Blog is a website that presents articles on various topics.
 
-## Environnement de développement
+## Development environment
 
-### Pré-requis
+### Pre-requisites
 
 * PHP 8.2
 * Composer
 * Symfony CLI
+* Docker & Docker-compose
 
-Vous pouvez vérifier les pré-requis (sauf Docker et Docker-compose) avec la commande suivante (de la CLI Symfony) : 
+You can check the prerequisites (except Docker and Docker-compose) with the following command (from the Symfony CLI):
 
 ```bash
 symfony check:requirements
 ```
 
-### Lancer l'environnement de développement
+### Launch the development environment
 
 ```bash
-symfony serve -d
+docker-compose up -d
 ```
 
-## Lancer des tests
+## Run tests
 
 ```bash
 php bin/phpunit --testdox
