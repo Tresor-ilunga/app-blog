@@ -3,12 +3,12 @@ version: '3'
 services:
   database:
     image: mariadb:10.7.3
-    container_name: app-blog-database
+    container_name: app_blog_database
     restart: unless-stopped
     environment:
       MARIADB_USER: root
       MARIADB_ROOT_PASSWORD: root
-      MARIADB_DATABASE: app-blog
+      MARIADB_DATABASE: app_blog
       MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'no'
     volumes:
       - database-data:/var/lib/mysql:rw
@@ -18,7 +18,7 @@ services:
 
   web:
     image: nginx:alpine
-    container_name: sharing_nginx
+    container_name: blog_nginx
     restart: unless-stopped
     ports:
       - "8000:80"
@@ -30,7 +30,7 @@ services:
 
   php:
     user: '${USER_ID}:${GROUP_ID}'
-    container_name: app_blog_php
+    container_name: blog_php
     restart: unless-stopped
     build:
       context: ./tools/docker/php
@@ -41,7 +41,7 @@ services:
 
   redis:
     image: redis:6-alpine
-    container_name: app_blog_redis
+    container_name: blog_redis
     restart: unless-stopped
     labels:
       com.symfony.server.service-prefix: 'REDIS'
@@ -49,7 +49,7 @@ services:
   ## Development Tools
   maildev:
     image: maildev/maildev:2.0.2
-    container_name: app_blog_maildev
+    container_name: blog_maildev
     restart: unless-stopped
     command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
     ports:
@@ -59,7 +59,7 @@ services:
 
   adminer:
     image: adminer:4.8.1
-    container_name: app_blog_adminer
+    container_name: blog_adminer
     restart: unless-stopped
     depends_on:
       - database
@@ -71,7 +71,7 @@ services:
       - "8082:8080"
 
   node:
-    container_name: app_blog_node
+    container_name: blog_node
     restart: unless-stopped
     user: '${USER_ID}:${GROUP_ID}'
     build:
