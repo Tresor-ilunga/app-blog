@@ -6,6 +6,8 @@ namespace App\Model;
 
 /**
  * Class SearchData
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 class SearchData

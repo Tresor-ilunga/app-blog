@@ -12,6 +12,8 @@ use Twig\Environment;
 
 /**
  * Class DropdownCategoriesSubscriber
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 class DropdownCategoriesSubscriber implements EventSubscriberInterface

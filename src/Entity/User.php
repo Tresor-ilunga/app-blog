@@ -15,6 +15,8 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * Class User
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]

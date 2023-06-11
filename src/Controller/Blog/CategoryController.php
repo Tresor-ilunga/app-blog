@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class CategoryController
+ *
+ *
  * @author Tresor-Ilunga <ilungat82@gmail.com>
  */
 class CategoryController extends AbstractController

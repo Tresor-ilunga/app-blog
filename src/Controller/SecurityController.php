@@ -11,6 +11,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
  * Class SecurityController
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 class SecurityController extends AbstractController

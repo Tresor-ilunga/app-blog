@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class TagController
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 #[Route('/etiquettes')]

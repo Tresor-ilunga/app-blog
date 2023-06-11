@@ -14,6 +14,8 @@ use Faker\Factory;
 
 /**
  * Class CommentFixtures
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 class CommentFixtures extends Fixture implements DependentFixtureInterface

@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Thumbnail
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 #[ORM\Entity(repositoryClass: ThumbnailRepository::class)]

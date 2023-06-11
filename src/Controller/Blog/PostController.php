@@ -18,6 +18,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class PostController
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 class PostController extends AbstractController

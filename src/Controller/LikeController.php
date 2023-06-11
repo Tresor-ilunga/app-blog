@@ -13,6 +13,8 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
  * Class LikeController
+ *
+ *
  * @author Tresor-ilunga <ilungat82@gmail.com>
  */
 class LikeController extends AbstractController
