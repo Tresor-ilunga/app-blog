@@ -15,8 +15,7 @@ use Faker\Factory;
 /**
  * Class CategoryTagFixtures
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class CategoryTagFixtures extends Fixture implements DependentFixtureInterface
 {

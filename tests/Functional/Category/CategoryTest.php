@@ -12,8 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class CategoryTest
  *
- *
- * @author Tresor-ilunga <19im065@esisalama.org>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class CategoryTest extends WebTestCase
 {

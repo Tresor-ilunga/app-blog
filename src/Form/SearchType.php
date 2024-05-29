@@ -15,8 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class SearchType
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class SearchType extends AbstractType
 {

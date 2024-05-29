@@ -11,8 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Class BlogTest
  *
- *
- * @author Tresor-ilunga <19im065@esisalama.org>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class BlogTest extends WebTestCase
 {

@@ -14,8 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class CategoryController
  *
- *
- * @author Tresor-Ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class CategoryController extends AbstractController
 {
@@ -32,9 +31,12 @@ class CategoryController extends AbstractController
     {
         $posts = $postRepository->findPublished($request->query->getInt('page', 1));
 
-       return $this->render('pages/category/index.html.twig', [
-           'category' => $category,
-           'posts' => $posts,
-       ]);
+       return $this->render(
+           view: 'pages/category/index.html.twig',
+           parameters: [
+               'category' => $category,
+               'posts' => $posts,
+           ]
+       );
     }
 }

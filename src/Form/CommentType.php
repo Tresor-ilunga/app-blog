@@ -12,8 +12,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 /**
  * Class CommentType
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class CommentType extends AbstractType
 {

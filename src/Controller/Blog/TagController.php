@@ -14,8 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class TagController
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 #[Route('/etiquettes')]
 class TagController extends AbstractController
@@ -33,9 +32,12 @@ class TagController extends AbstractController
     {
         $posts = $postRepository->findPublished($request->query->getInt('page', 1), null, $tag);
 
-        return $this->render('pages/tag/index.html.twig', [
-            'tag' => $tag,
-            'posts' => $posts
-        ]);
+        return $this->render(
+            view: 'pages/tag/index.html.twig',
+            parameters:[
+                'tag' => $tag,
+                'posts' => $posts
+            ]
+        );
     }
 }

@@ -13,8 +13,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 /**
  * Class LikeFixtures
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class LikeFixtures extends Fixture implements DependentFixtureInterface
 {

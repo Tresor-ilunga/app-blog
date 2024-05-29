@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class PostController
  *
  *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class PostController extends AbstractController
 {

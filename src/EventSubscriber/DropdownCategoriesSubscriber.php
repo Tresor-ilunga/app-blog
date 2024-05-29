@@ -13,8 +13,7 @@ use Twig\Environment;
 /**
  * Class DropdownCategoriesSubscriber
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class DropdownCategoriesSubscriber implements EventSubscriberInterface
 {

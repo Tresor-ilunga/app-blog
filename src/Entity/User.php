@@ -16,8 +16,7 @@ use Symfony\Component\Uid\Uuid;
 /**
  * Class User
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity('email', 'Cet email existe déjà au sein de l\'application.')]

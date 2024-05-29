@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * Class BasicTest
  *
  *
- * @author Tresor-ilunga <19im065@esisalama.org>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class BasicTest extends WebTestCase
 {

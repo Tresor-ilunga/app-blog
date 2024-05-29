@@ -12,8 +12,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 /**
  * Class SecurityController
  *
- *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 class SecurityController extends AbstractController
 {
@@ -28,10 +27,13 @@ class SecurityController extends AbstractController
     {
         $error = $utils->getLastAuthenticationError();
 
-        return $this->render('pages/security/login.html.twig', [
-            'error' => $error,
-            'last_username' => $utils->getLastUsername()
-        ]);
+        return $this->render(
+            view: 'pages/security/login.html.twig',
+            parameters: [
+                'error' => $error,
+                'last_username' => $utils->getLastUsername()
+            ]
+        );
     }
 
     /**

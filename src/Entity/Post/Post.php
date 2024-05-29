@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class Post
  *
- * @author Tresor-ilunga <ilungat82@gmail.com>
+ * @author Trésor-ILUNGA <hello@tresor-ilunga.tech>
  */
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\HasLifecycleCallbacks]
